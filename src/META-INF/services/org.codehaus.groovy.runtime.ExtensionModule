@@ -1,0 +1,3 @@
+moduleName=GroovyTableCustomFormatMethods
+moduleVersion=1.0
+extensionClasses=jcconf.groovy.script.CustomFormatMethods
