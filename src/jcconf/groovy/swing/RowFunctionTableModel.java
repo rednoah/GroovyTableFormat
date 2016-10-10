@@ -1,6 +1,5 @@
 package jcconf.groovy.swing;
 
-import java.util.Objects;
 import java.util.function.Function;
 
 import javax.swing.table.AbstractTableModel;
@@ -42,15 +41,10 @@ public class RowFunctionTableModel extends AbstractTableModel {
 	@Override
 	public Object getValueAt(int row, int column) {
 		try {
-			return Objects.toString(getRowValues(row)[column]);
+			return getRowValues(row)[column];
 		} catch (Exception e) {
 			return e;
 		}
-	}
-
-	@Override
-	public Class<?> getColumnClass(int column) {
-		return getValueAt(0, column).getClass();
 	}
 
 }
