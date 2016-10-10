@@ -86,4 +86,9 @@ public class Episode implements Serializable {
 		return seriesInfo;
 	}
 
+	@Override
+	public String toString() {
+		return String.format("%s - %dx%02d - %s", seriesName, season, episode, title);
+	}
+
 }
