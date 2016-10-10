@@ -59,16 +59,20 @@ public class TableFormat implements Function<Object, Object[]> {
 		}
 	}
 
-	private static Compilable groovyScriptEngine = (Compilable) createScriptEngine();
+	private static Compilable groovyScriptEngine = createScriptEngine();
 
 	private static Compilable createScriptEngine() {
 		CompilerConfiguration config = new CompilerConfiguration();
 
-		ImportCustomizer imports = new ImportCustomizer();
-		imports.addStaticStars(CustomFormatFunctions.class.getName()); // import static CustomFormatFunctions.*
-		config.addCompilationCustomizers(imports);
-
+		// TODO Set ScriptBaseClass so we can deal with missing properties and add properties or functions to the script context
 		config.setScriptBaseClass(CustomScriptBaseClass.class.getName());
+
+		ImportCustomizer imports = new ImportCustomizer();
+
+		// TODO Add static import so that we can use the static methods: e.g. any{e}{"Special $special"}
+		imports.addStaticStars(CustomFormatFunctions.class.getName());
+
+		config.addCompilationCustomizers(imports);
 
 		GroovyClassLoader classLoader = new GroovyClassLoader(Thread.currentThread().getContextClassLoader(), config);
 		return (Compilable) new GroovyScriptEngineImpl(classLoader);

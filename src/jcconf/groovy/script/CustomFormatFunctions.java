@@ -33,7 +33,7 @@ public class CustomFormatFunctions {
 			}
 		}
 
-		// object as boolean => Groovy Truth
+		// TODO Groovy Truth: object as boolean
 		if (DefaultTypeTransformation.castToBoolean(object)) {
 			return object;
 		}

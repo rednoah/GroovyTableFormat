@@ -6,6 +6,11 @@ import java.util.regex.Matcher;
 
 import com.ibm.icu.text.Transliterator;
 
+/**
+ * TODO Add org.codehaus.groovy.runtime.ExtensionModule via java.util.ServiceLoader
+ * 
+ * @see META-INF/services/org.codehaus.groovy.runtime.ExtensionModule
+ */
 public class CustomFormatMethods {
 
 	public static String getLower(String self) {
@@ -23,14 +28,17 @@ public class CustomFormatMethods {
 		return self;
 	}
 
+	// TODO Add String.pad(int) extension method
 	public static String pad(String self, int length) {
 		return pad(self, length, "0");
 	}
 
+	// TODO Add Number.pad(int) extension method
 	public static String pad(Number self, int length) {
 		return pad(self.toString(), length, "0");
 	}
 
+	// TODO Add String.acronym extension method / property
 	public static String getAcronym(String self) {
 		Matcher matcher = compile("(?<=[&()+.,-;<=>?\\[\\]_{|}~ ]|^)[\\p{Alnum}]").matcher(self);
 
@@ -42,6 +50,7 @@ public class CustomFormatMethods {
 		return buffer.toString();
 	}
 
+	// TODO Add String.pinyin extension method / property
 	public static String getPinyin(String self) {
 		return Transliterator.getInstance("Han-Latin").transform(self);
 	}
