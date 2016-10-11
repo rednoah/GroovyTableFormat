@@ -50,13 +50,13 @@ public abstract class CustomScriptBaseClass extends Script {
 	}
 
 	/**
-	 * e.g. findEpisodes{ it.season == s && it.episode > e } || special ? null : 'Season Finale'
+	 * e.g. hasEpisode{ it.season == s && it.episode > e} ? null : 'Season Finale'
 	 */
-	public Object findEpisodes(Closure<?> condition) throws Exception {
+	public boolean hasEpisode(Closure<?> condition) throws Exception {
 		Object[] array = Main.getSampleData();
 
-		// TODO Call default Groovy methods: e.g. episodes.findAll{ s == 1 }
-		return DefaultGroovyMethods.findAll(array, condition);
+		// TODO Call default Groovy methods: e.g. episodes.find{ s == 6 && e == 10 }
+		return DefaultGroovyMethods.find(array, condition) != null;
 	}
 
 	public File getHome() throws IOException {
