@@ -40,14 +40,7 @@ public class CustomFormatMethods {
 
 	// TODO Add String.acronym extension method / property
 	public static String getAcronym(String self) {
-		Matcher matcher = compile("(?<=[&()+.,-;<=>?\\[\\]_{|}~ ]|^)[\\p{Alnum}]").matcher(self);
-
-		StringBuilder buffer = new StringBuilder();
-		while (matcher.find()) {
-			buffer.append(matcher.group());
-		}
-
-		return buffer.toString();
+		return compile("\\B.|\\P{L}", UNICODE_CHARACTER_CLASS).matcher(self).replaceAll("");
 	}
 
 	// TODO Add String.pinyin extension method / property
