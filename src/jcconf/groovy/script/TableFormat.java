@@ -71,6 +71,7 @@ public class TableFormat implements Function<Object, Object[]> {
 
 		// TODO Add static import so that we can use the static methods: e.g. any{e}{"Special $special"}
 		imports.addStaticStars(CustomStaticImports.class.getName());
+		imports.addStaticStars(Math.class.getName());
 
 		config.addCompilationCustomizers(imports);
 
