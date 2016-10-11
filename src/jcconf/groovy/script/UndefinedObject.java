@@ -3,7 +3,7 @@ package jcconf.groovy.script;
 import groovy.lang.GroovyObjectSupport;
 
 /**
- * TODO Intercept method calls and properties at runtime
+ * TODO 3.1 GroovyObjectSupport: Intercept method calls and properties at runtime
  */
 public class UndefinedObject extends GroovyObjectSupport {
 

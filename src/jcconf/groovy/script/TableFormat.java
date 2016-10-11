@@ -64,12 +64,12 @@ public class TableFormat implements Function<Object, Object[]> {
 	private static Compilable createScriptEngine() {
 		CompilerConfiguration config = new CompilerConfiguration();
 
-		// TODO Set ScriptBaseClass so we can deal with missing properties and add properties or functions to the script context
+		// TODO 2.1 CompilerConfiguration: Set ScriptBaseClass so we can deal with missing properties and add properties or functions to the script context
 		config.setScriptBaseClass(CustomScriptBaseClass.class.getName());
 
 		ImportCustomizer imports = new ImportCustomizer();
 
-		// TODO Add static import so that we can use the static methods: e.g. any{e}{"Special $special"}
+		// TODO 2.2 CompilerConfiguration: Add static import so that we can use the static methods: e.g. any{e}{"Special $special"}
 		imports.addStaticStars(CustomStaticImports.class.getName());
 		imports.addStaticStars(Math.class.getName());
 

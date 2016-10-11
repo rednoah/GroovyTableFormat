@@ -33,7 +33,7 @@ public abstract class CustomScriptBaseClass extends Script {
 			// setSuppressMissingPropertyException false
 			// x => return Object => Undefined: x
 
-			// TODO Use Null Object pattern for non-existing properties instead of null or throwing an MissingPropertyException
+			// TODO 3.2 Use Null Object pattern for non-existing properties instead of null or throwing an MissingPropertyException
 			return new UndefinedObject(property);
 		}
 
@@ -55,7 +55,7 @@ public abstract class CustomScriptBaseClass extends Script {
 	public boolean hasEpisode(Closure<?> condition) throws Exception {
 		Object[] array = Main.getSampleData();
 
-		// TODO Call default Groovy methods: e.g. episodes.find{ s == 6 && e == 10 }
+		// TODO 5.1 DefaultGroovyMethods: Call default Groovy methods: e.g. episodes.find{ s == 6 && e == 10 }
 		return DefaultGroovyMethods.find(array, condition) != null;
 	}
 
@@ -68,7 +68,7 @@ public abstract class CustomScriptBaseClass extends Script {
 	 */
 	public boolean check(File file, Closure<?>... closures) {
 		return stream(closures).allMatch(closure -> {
-			// TODO Cast closure to Java interface
+			// TODO 4.2 Cast closure to Java interface
 			FileFilter filter = (FileFilter) DefaultTypeTransformation.castToType(closure, FileFilter.class);
 			return filter.accept(file);
 		});
@@ -81,7 +81,7 @@ public abstract class CustomScriptBaseClass extends Script {
 		StringWriter buffer = new StringWriter();
 		MarkupBuilder builder = new MarkupBuilder(buffer);
 
-		// TODO Call closure in MarkupBuilder context
+		// TODO 5.2 Closure.rehydrate(): Call closure in MarkupBuilder context
 		closure.rehydrate(closure.getDelegate(), builder, builder).call();
 
 		return buffer.toString();

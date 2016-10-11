@@ -33,7 +33,7 @@ public class CustomStaticImports {
 			}
 		}
 
-		// TODO Groovy Truth: object as boolean
+		// TODO 4.1 DefaultTypeTransformation: Groovy Truth: object as boolean
 		if (DefaultTypeTransformation.castToBoolean(object)) {
 			return object;
 		}
