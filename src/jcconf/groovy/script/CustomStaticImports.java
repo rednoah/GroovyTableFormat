@@ -10,7 +10,7 @@ import org.codehaus.groovy.runtime.typehandling.DefaultTypeTransformation;
 
 import groovy.lang.Closure;
 
-public class CustomFormatFunctions {
+public class CustomStaticImports {
 
 	public static Object any(Object c1, Object c2, Object... cN) {
 		return stream(c1, c2, cN).findFirst().orElse(null);
@@ -21,7 +21,7 @@ public class CustomFormatFunctions {
 	}
 
 	private static Stream<Object> stream(Object c1, Object c2, Object... cN) {
-		return Stream.concat(Stream.of(c1, c2), Stream.of(cN)).map(CustomFormatFunctions::getResult).filter(Objects::nonNull);
+		return Stream.concat(Stream.of(c1, c2), Stream.of(cN)).map(CustomStaticImports::getResult).filter(Objects::nonNull);
 	}
 
 	private static Object getResult(Object object) {

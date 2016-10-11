@@ -2,8 +2,6 @@ package jcconf.groovy.script;
 
 import static java.util.regex.Pattern.*;
 
-import java.util.regex.Matcher;
-
 import com.ibm.icu.text.Transliterator;
 
 /**
@@ -11,7 +9,7 @@ import com.ibm.icu.text.Transliterator;
  * 
  * @see META-INF/services/org.codehaus.groovy.runtime.ExtensionModule
  */
-public class CustomFormatMethods {
+public class CustomExtensionMethods {
 
 	public static String getLower(String self) {
 		return self.toLowerCase();

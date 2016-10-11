@@ -70,7 +70,7 @@ public class TableFormat implements Function<Object, Object[]> {
 		ImportCustomizer imports = new ImportCustomizer();
 
 		// TODO Add static import so that we can use the static methods: e.g. any{e}{"Special $special"}
-		imports.addStaticStars(CustomFormatFunctions.class.getName());
+		imports.addStaticStars(CustomStaticImports.class.getName());
 
 		config.addCompilationCustomizers(imports);
 
