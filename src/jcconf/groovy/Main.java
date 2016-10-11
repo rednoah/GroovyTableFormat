@@ -24,8 +24,7 @@ public class Main {
 
 	public static void start() {
 		try {
-			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-			UIManager.put("TitledBorder.border", UIManager.getBorder("InsetBorder.aquaVariant"));
+			setSystemLookAndFeel();
 
 			ScriptableTable table = new ScriptableTable(getSampleData());
 
@@ -35,9 +34,31 @@ public class Main {
 			window.setLocationByPlatform(true);
 			window.setSize(800, 600);
 
-			FullScreenUtilities.setWindowCanFullScreen(window, true); // Mac OS X only
+			setWindowCanFullScreen(window);
 
 			window.setVisible(true);
+		} catch (Throwable e) {
+			e.printStackTrace();
+		}
+	}
+
+	private static void setSystemLookAndFeel() {
+		try {
+			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+
+			if ("Mac OS X".equals(System.getProperty("os.name"))) {
+				UIManager.put("TitledBorder.border", UIManager.getBorder("InsetBorder.aquaVariant"));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	private static void setWindowCanFullScreen(JFrame window) {
+		try {
+			if ("Mac OS X".equals(System.getProperty("os.name"))) {
+				FullScreenUtilities.setWindowCanFullScreen(window, true);
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
