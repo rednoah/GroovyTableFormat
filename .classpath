@@ -8,5 +8,6 @@
 	<classpathentry kind="lib" path="lib/json-io-4.8.0.jar"/>
 	<classpathentry kind="lib" path="lib/icu4j.jar"/>
 	<classpathentry kind="lib" path="lib/groovy-all.jar"/>
+	<classpathentry kind="lib" path="lib/AppleJavaExtensions.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
