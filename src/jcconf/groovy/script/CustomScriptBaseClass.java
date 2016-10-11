@@ -5,6 +5,7 @@ import static java.util.Arrays.*;
 import java.io.File;
 import java.io.FileFilter;
 import java.io.IOException;
+import java.io.StringWriter;
 import java.time.LocalDate;
 
 import org.codehaus.groovy.runtime.DefaultGroovyMethods;
@@ -13,6 +14,7 @@ import org.codehaus.groovy.runtime.typehandling.DefaultTypeTransformation;
 import groovy.lang.Closure;
 import groovy.lang.MissingPropertyException;
 import groovy.lang.Script;
+import groovy.xml.MarkupBuilder;
 import jcconf.groovy.Main;
 import jcconf.groovy.model.SimpleDate;
 
@@ -66,10 +68,23 @@ public abstract class CustomScriptBaseClass extends Script {
 	 */
 	public boolean check(File file, Closure<?>... closures) {
 		return stream(closures).allMatch(closure -> {
-			// TODO Cast Closure to Java Interface
+			// TODO Cast closure to Java interface
 			FileFilter filter = (FileFilter) DefaultTypeTransformation.castToType(closure, FileFilter.class);
 			return filter.accept(file);
 		});
+	}
+
+	/**
+	 * e.g. XML{ episode(id:i) { name(n); title(t) } }
+	 */
+	public String XML(Closure<?> closure) {
+		StringWriter buffer = new StringWriter();
+		MarkupBuilder builder = new MarkupBuilder(buffer);
+
+		// TODO Call closure in MarkupBuilder context
+		closure.rehydrate(closure.getDelegate(), builder, builder).call();
+
+		return buffer.toString();
 	}
 
 }
